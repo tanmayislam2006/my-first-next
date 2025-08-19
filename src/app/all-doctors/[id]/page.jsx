@@ -1,0 +1,300 @@
+import React from "react";
+
+// ✅ Your doctors data
+const allDoctors = [
+  {
+    id: 1,
+    name: "Dr. Sarah Johnson",
+    image: "https://i.ibb.co/C3M1QD0Z/doctor5.jpg",
+    education: "MD, Cardiology (Harvard)",
+    speciality: "Cardiology",
+    experience: "12 Years",
+    registrationNumber: "CARD789012",
+    designation: "Senior Cardiologist",
+    workplace: "HeartCare Hospital",
+    fee: 200,
+    availability: ["Monday", "Wednesday", "Friday"],
+    bio: "Specializes in interventional cardiology and pacemaker implants.",
+  },
+  {
+    id: 2,
+    name: "Dr. Michael Chen",
+    image: "https://i.ibb.co/t1yPXpr/male-doctor-1.jpg",
+    education: "PhD Neurology (Johns Hopkins)",
+    speciality: "Neurology",
+    experience: "9 Years",
+    registrationNumber: "NEURO456123",
+    designation: "Head of Neurology",
+    workplace: "NeuroGen Institute",
+    fee: 180,
+    availability: ["Tuesday", "Thursday"],
+    bio: "Expert in Parkinson's disease and migraine management.",
+  },
+  {
+    id: 3,
+    name: "Dr. Emily Rodriguez",
+    image: "https://i.ibb.co/xSXTCwMj/doctor6.jpg",
+    education: "MD Pediatrics (Stanford)",
+    speciality: "Pediatrics",
+    experience: "7 Years",
+    registrationNumber: "PEDIA321654",
+    designation: "Child Specialist",
+    workplace: "KidsFirst Clinic",
+    fee: 150,
+    availability: ["Monday", "Wednesday", "Saturday"],
+    bio: "Vaccination expert and neonatal care specialist.",
+  },
+  {
+    id: 4,
+    name: "Dr. James Wilson",
+    image: "https://i.ibb.co.com/5hGbn06Q/male-doctor-0.jpg",
+    education: "MS Orthopedics (Mayo Clinic)",
+    speciality: "Orthopedics",
+    experience: "15 Years",
+    registrationNumber: "ORTHO987321",
+    designation: "Joint Replacement Surgeon",
+    workplace: "Bone & Joint Center",
+    fee: 220,
+    availability: ["Tuesday", "Friday"],
+    bio: "Pioneer in robotic knee replacement surgeries.",
+  },
+  {
+    id: 5,
+    name: "Dr. Olivia Park",
+    image: "https://i.ibb.co/b5bDLH5X/doctor7.jpg",
+    education: "MD Dermatology (UCLA)",
+    speciality: "Dermatology",
+    experience: "8 Years",
+    registrationNumber: "DERMA654987",
+    designation: "Cosmetic Dermatologist",
+    workplace: "SkinRevive Clinic",
+    fee: 170,
+    availability: ["Monday", "Thursday", "Saturday"],
+    bio: "Specializes in acne treatment and anti-aging therapies.",
+  },
+  {
+    id: 6,
+    name: "Dr. Robert Taylor",
+    image: "https://i.ibb.co/xNnvMhw/male-doctor-3.jpg",
+    education: "MD Psychiatry (Yale)",
+    speciality: "Psychiatry",
+    experience: "10 Years",
+    registrationNumber: "PSYCH147258",
+    designation: "Mental Health Director",
+    workplace: "MindPeace Hospital",
+    fee: 190,
+    availability: ["Wednesday", "Sunday"],
+    bio: "Cognitive behavioral therapy specialist.",
+  },
+  {
+    id: 7,
+    name: "Dr. Anita Desai",
+    image: "https://i.ibb.co/F18XfYW/doctor8.jpg",
+    education: "MD Obstetrics (AIIMS)",
+    speciality: "Gynecology",
+    experience: "11 Years",
+    registrationNumber: "GYNEC369258",
+    designation: "Senior Gynecologist",
+    workplace: "Women's Wellness Center",
+    fee: 160,
+    availability: ["Tuesday", "Friday", "Sunday"],
+    bio: "Expert in high-risk pregnancies and laparoscopic surgeries.",
+  },
+  {
+    id: 8,
+    name: "Dr. David Kim",
+    image: "https://i.ibb.co/hxK4TB5h/male-doctor-4.webp",
+    education: "PhD Oncology (MD Anderson)",
+    speciality: "Oncology",
+    experience: "14 Years",
+    registrationNumber: "ONCO159357",
+    designation: "Cancer Specialist",
+    workplace: "Hope Cancer Center",
+    fee: 250,
+    availability: ["Monday", "Thursday"],
+    bio: "Specializes in targeted therapy for breast cancer.",
+  },
+  {
+    id: 9,
+    name: "Dr. Lisa Wong",
+    image: "https://i.ibb.co/PzZsRBRh/doctor9.jpg",
+    education: "MD Endocrinology (Toronto)",
+    speciality: "Endocrinology",
+    experience: "6 Years",
+    registrationNumber: "ENDO753951",
+    designation: "Diabetes Specialist",
+    workplace: "SugarFree Clinic",
+    fee: 155,
+    availability: ["Wednesday", "Saturday"],
+    bio: "Thyroid disorder and metabolic syndrome expert.",
+  },
+  {
+    id: 10,
+    name: "Dr. Raj Patel",
+    image: "https://i.ibb.co/xK1fgbn8/male-doctor-5.webp",
+    education: "DM Gastroenterology (Cleveland Clinic)",
+    speciality: "Gastroenterology",
+    experience: "13 Years",
+    registrationNumber: "GASTRO852456",
+    designation: "GI Surgeon",
+    workplace: "Digestive Health Institute",
+    fee: 210,
+    availability: ["Tuesday", "Friday"],
+    bio: "Advanced endoscopy and IBD specialist.",
+  },
+  {
+    id: 11,
+    name: "Dr. Sophia Müller",
+    image: "https://i.ibb.co/9kQsHFp5/doctor2.jpg",
+    education: "MD Pulmonology (Charité)",
+    speciality: "Pulmonology",
+    experience: "8 Years",
+    registrationNumber: "PULMO963852",
+    designation: "Lung Specialist",
+    workplace: "BreatheEasy Hospital",
+    fee: 175,
+    availability: ["Monday", "Thursday", "Sunday"],
+    bio: "COPD and sleep apnea treatment expert.",
+  },
+  {
+    id: 12,
+    name: "Dr. Carlos Mendez",
+    image: "https://i.ibb.co/LjCnn4m/male-doctor-6.webp",
+    education: "MS Urology (Johns Hopkins)",
+    speciality: "Urology",
+    experience: "10 Years",
+    registrationNumber: "URO741852",
+    designation: "Uro-Oncologist",
+    workplace: "Renal Care Center",
+    fee: 195,
+    availability: ["Wednesday", "Saturday"],
+    bio: "Specializes in minimally invasive prostate surgeries.",
+  },
+  {
+    id: 13,
+    name: "Dr. Aisha Khan",
+    image: "https://i.ibb.co/fdj7XprQ/doctor10.jpg",
+    education: "MD Rheumatology (Oxford)",
+    speciality: "Rheumatology",
+    experience: "7 Years",
+    registrationNumber: "RHEUM159753",
+    designation: "Arthritis Specialist",
+    workplace: "JointPain Clinic",
+    fee: 165,
+    availability: ["Tuesday", "Friday"],
+    bio: "Autoimmune disease and lupus treatment expert.",
+  },
+  {
+    id: 14,
+    name: "Dr. Thomas Fischer",
+    image: "https://i.ibb.co/1J9NpxNv/male-doctor-7.jpg",
+    education: "DM Nephrology (Mayo Clinic)",
+    speciality: "Nephrology",
+    experience: "12 Years",
+    registrationNumber: "NEPH258369",
+    designation: "Kidney Transplant Surgeon",
+    workplace: "RenalLife Hospital",
+    fee: 230,
+    availability: ["Monday", "Thursday"],
+    bio: "Dialysis access and electrolyte disorder specialist.",
+  },
+  {
+    id: 15,
+    name: "Dr. Priya Sharma",
+    image: "https://i.ibb.co/ZRvwM8sQ/doctor3.webp",
+    education: "MS Ophthalmology (Aravind)",
+    speciality: "Ophthalmology",
+    experience: "9 Years",
+    registrationNumber: "OPHTH456789",
+    designation: "Retina Specialist",
+    workplace: "ClearSight Eye Center",
+    fee: 185,
+    availability: ["Wednesday", "Saturday", "Sunday"],
+    bio: "LASIK surgery and diabetic retinopathy expert.",
+  },
+  {
+    id: 16,
+    name: "Dr. Kenji Tanaka",
+    image: "https://i.ibb.co/Gvhgmwf9/male-doctor-8.jpg",
+    education: "MD ENT (Tokyo University)",
+    speciality: "ENT",
+    experience: "11 Years",
+    registrationNumber: "ENT123789",
+    designation: "Head & Neck Surgeon",
+    workplace: "EarNoseThroat Institute",
+    fee: 170,
+    availability: ["Tuesday", "Friday"],
+    bio: "Specializes in cochlear implants and sinus surgeries.",
+  },
+];
+
+const DoctorDetails = async ({ params }) => {
+  const { id } = await params;
+  const doctor = allDoctors.find((doc) => doc.id === parseInt(id));
+
+  if (!doctor) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-2xl font-semibold text-red-600">
+          Doctor not found ❌
+        </h1>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-10">
+      {/* Card container */}
+      <div className="bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row">
+        
+        {/* Left: Image */}
+        <div className="md:w-1/3 flex items-center justify-center bg-gray-100 p-6">
+          <img
+            src={doctor.image}
+            alt={doctor.name}
+            className="rounded-xl w-64 h-64 object-cover shadow-md"
+          />
+        </div>
+
+        {/* Right: Info */}
+        <div className="md:w-2/3 p-6 space-y-4">
+          <h1 className="text-3xl font-bold text-gray-900">{doctor.name}</h1>
+          <p className="text-blue-600 font-medium text-lg">
+            {doctor.designation} • {doctor.speciality}
+          </p>
+          <p className="text-gray-600 italic">{doctor.education}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+            <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-700">Experience</p>
+              <p className="text-gray-600">{doctor.experience}</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-700">Workplace</p>
+              <p className="text-gray-600">{doctor.workplace}</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-700">Consultation Fee</p>
+              <p className="text-gray-600">${doctor.fee}</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+              <p className="font-semibold text-gray-700">Availability</p>
+              <p className="text-gray-600">{doctor.availability.join(", ")}</p>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <h2 className="text-xl font-semibold text-gray-800">About</h2>
+            <p className="text-gray-600 mt-2">{doctor.bio}</p>
+          </div>
+
+          <button className="mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow-md hover:bg-blue-700 transition">
+            Book Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DoctorDetails;
