@@ -9,8 +9,8 @@ const Navbar = () => {
                 <Link href="/">
                     <li className='mx-4'>Home</li>
                 </Link>
-                <Link href="/about">
-                    <li className='mx-4'>About</li>
+                <Link href="/services">
+                    <li className='mx-4'>Services</li>
                 </Link>
                 <Link href="/contact">
                     <li className='mx-4'>Contact</li>
