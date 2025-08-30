@@ -19,6 +19,8 @@ const recentReports = [
   { id: "#R123", issue: "Fake Product", reportedBy: "Alex Roy", status: "Pending" },
   { id: "#R124", issue: "Late Delivery", reportedBy: "John Doe", status: "Resolved" },
   { id: "#R125", issue: "Wrong Item", reportedBy: "Sarah Khan", status: "In Review" },
+  { id: "#R125", issue: "Wrong Item", reportedBy: "Sarah Khan", status: "In Review" },
+  { id: "#R125", issue: "Wrong Item", reportedBy: "Sarah Khan", status: "In Review" },
 ];
 
 const AdminDashboard = () => {
