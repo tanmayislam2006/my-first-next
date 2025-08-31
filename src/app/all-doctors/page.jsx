@@ -229,7 +229,7 @@ const allDoctors = [
 const AllDoctors = () => {
   return (
     <div>
-      <h1 className="text-3xl">All Doctors</h1>
+      <h1 className="text-3xl">All Doctors [o]</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {allDoctors.map((doctor) => (
           <div key={doctor.id} className="border p-4 rounded">
