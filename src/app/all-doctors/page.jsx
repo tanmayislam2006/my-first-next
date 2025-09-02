@@ -249,6 +249,7 @@ const AllDoctors = () => {
             </Link>
           </div>
         ))}
+        
       </div>
     </div>
   );
