@@ -23,7 +23,6 @@ export async function POST(request) {
         { status: 400 }
       );
     }
-
     const newUser = {
       id: Date.now(),
       name,
