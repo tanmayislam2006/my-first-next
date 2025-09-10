@@ -36,7 +36,6 @@ export async function POST(request) {
       message: "User added successfully",
       user: newUser,
     });
-    
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "Something went wrong", error },
